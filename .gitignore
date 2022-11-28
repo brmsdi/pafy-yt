@@ -1,4 +1,5 @@
 build/
 venv/
+files/
 
 main.spec
