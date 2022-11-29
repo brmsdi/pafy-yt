@@ -1,3 +1,4 @@
+from sys import exit
 from os import makedirs, path
 import pafy
 from model.video import Video, Item
@@ -19,15 +20,17 @@ if __name__ == '__main__':
                         type=str,
                         help='Nome do arquivo que será gerado')
 
-    """https://www.youtube.com/watch?v=gQxQ9K4gnn0&ab_channel=VitorRamosVideos"""
-
     args = parser.parse_args()
     fileVideo = pafy.new(args.link[0])
-    video = extract_dict(file=fileVideo, video=Video, item=Item)
 
-    if not path.isdir("./files"):
-        makedirs("./files")
+    if fileVideo.videoid:
+        video = extract_dict(file=fileVideo, video=Video, item=Item)
 
-    with open(f"./files/{args.fileName[0]}.json", "w+") as outfile:
-        outfile.write(convert_to_json(video, json).decode())
-        outfile.close()
+        if not path.isdir("./files"):
+            makedirs("./files")
+
+        with open(f"./files/{args.fileName[0]}.json", "w+") as outfile:
+            outfile.write(convert_to_json(video, json).decode())
+            outfile.close()
+    else:
+        exit(1)
