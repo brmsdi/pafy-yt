@@ -22,10 +22,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     fileVideo = pafy.new(args.link[0])
-
     if fileVideo.videoid:
         video = extract_dict(file=fileVideo, video=Video, item=Item)
-
         if not path.isdir("./files"):
             makedirs("./files")
 
