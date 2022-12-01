@@ -1,11 +1,12 @@
 def extract_dict(file, video, item):
     items = list()
-    result = video(videoid=file.videoid, author=file.author, title=file.title, duration=file.duration,
-                   thumb=file.getbestthumb())
+    result = video(videoid=file.videoid, author=file.author, title=file.title,
+                   duration=file.duration, thumb=file.getbestthumb())
     count = 1
-    for fileVideo in file.allstreams:
-        extracted_item = item(count, fileVideo.extension, fileVideo.resolution, fileVideo.url, fileVideo.bitrate,
-                              fileVideo.rawbitrate, fileVideo.get_filesize())
+    for stream in file.allstreams:
+        extracted_item = item(count, stream.extension, stream.resolution, stream.url_https,
+                              stream.bitrate, stream.rawbitrate,
+                              stream.get_filesize(), stream.mediatype)
         items.append(extracted_item.__dict__)
         count += 1
     result.items = items.copy()
