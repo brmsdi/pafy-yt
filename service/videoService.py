@@ -1,3 +1,8 @@
+import pafy
+
+from model.video import Video, Item
+
+
 def extract_dict(file, video, item):
     items = list()
     result = video(videoid=file.videoid, author=file.author, title=file.title,
@@ -13,5 +18,7 @@ def extract_dict(file, video, item):
     return result.__dict__
 
 
-def convert_to_json(video, json):
-    return json.dumps(video, ensure_ascii=False).encode('utf8')
+def get_video_service(link=''):
+    file_video = pafy.new(link)
+    if file_video.videoid:
+        return extract_dict(file=file_video, video=Video, item=Item)
