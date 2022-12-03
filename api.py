@@ -12,7 +12,6 @@ cors = CORS(app, resources={r"/api/v2/video": {"origins": environ['ORIGINV1']}})
 def get_video():
     link = request.args.get('link')
     if link:
-        print("var : " + environ['ORIGINV1'])
         return get_video_service(link)
     error = Error()
     error.error = "404"
