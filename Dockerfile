@@ -1,5 +1,4 @@
 FROM python:3.7.15-alpine3.17 as compiler
-ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app/
 
@@ -13,7 +12,7 @@ RUN apk update && \
   pip3 install git+https://github.com/brmsdi/pafy
 
 COPY ./requirements.txt /app/requirements.txt
-RUN pip3 install -Ur requirements.txt
+RUN pip3 install -Ur /app/requirements.txt
 
 FROM python:3.7.15-alpine3.17 as runner
 WORKDIR /app/
