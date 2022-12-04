@@ -17,7 +17,3 @@ def get_video():
     error.error = "404"
     error.message = "Não foi possível processar a requisição. Tente novamente!"
     return error.__dict__
-
-
-if __name__ == '__main__':
-    app.run()
