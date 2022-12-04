@@ -14,7 +14,7 @@ idna==3.4
 itsdangerous==2.1.2
 Jinja2==3.1.2
 MarkupSafe==2.1.1
-youtube_dl @ git+https://github.com/brmsdi/youtube-dl
+youtube-dl==2021.12.17
 pafy @ git+https://github.com/brmsdi/pafy@45f0deb067bf7c420cdf83a0529fd5274c12de18
 pyinstaller==5.6.2
 pyinstaller-hooks-contrib==2022.13
