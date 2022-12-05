@@ -3,7 +3,6 @@ FROM python:3.7.15-alpine3.17 as compiler
 WORKDIR /app/
 
 RUN python -m venv /opt/venv
-# Enable venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 RUN apk update && \
